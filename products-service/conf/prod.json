@@ -1,0 +1,7 @@
+{
+  "productsDb": {
+    "url": "mongodb://products-db:27017",
+    "username": "products_service",
+    "password": "products_service_sQOpCA3Y4V"
+  }
+}

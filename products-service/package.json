@@ -1,0 +1,12 @@
+{
+  "name": "products-service",
+  "version": "1.0.0",
+  "description": "ChAMP devops assignment: products service",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.2.0"
+  }
+}

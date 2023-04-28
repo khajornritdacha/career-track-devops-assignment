@@ -1,0 +1,12 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "description": "ChAMP devops assignment: users service",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}

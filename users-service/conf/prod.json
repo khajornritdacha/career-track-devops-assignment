@@ -1,0 +1,8 @@
+{
+  "userDb": {
+    "host": "users-db",
+    "port": "3306",
+    "user": "user_service",
+    "password": "user_service_PzWicKV95N"
+  }
+}
