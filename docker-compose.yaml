@@ -1,0 +1,59 @@
+version: "3.3"
+services:
+  products-db:
+    build: ./products-db
+    container_name: products-db
+    restart: always
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    volumes:
+      - swe-products:/data/db
+  products-service:
+    build: ./products-service
+    restart: always
+    container_name: products-service
+    ports:
+      - 3001:3001
+    environment:
+      - ENV=prod
+    expose:
+      - 3001
+    depends_on:
+      - products-db
+  users-db:
+    build: ./users-db
+    restart: always
+    container_name: users-db
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - swe-users:/var/lib/mysql
+  users-service:
+    build: ./users-service
+    container_name: users-service
+    restart: always
+    environment:
+      - ENV=prod
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    depends_on:
+      - users-db
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - products-service
+      - users-service
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+volumes:
+  swe-products:
+  swe-users:
