@@ -6,8 +6,6 @@ services:
     restart: always
     ports:
       - 27017:27017
-    expose:
-      - 27017
     volumes:
       - swe-products:/data/db
   products-service:
@@ -18,8 +16,6 @@ services:
       - 3001:3001
     environment:
       - ENV=prod
-    expose:
-      - 3001
     depends_on:
       - products-db
   users-db:
@@ -28,8 +24,6 @@ services:
     container_name: users-db
     ports:
       - 3306:3306
-    expose:
-      - 3306
     volumes:
       - swe-users:/var/lib/mysql
   users-service:
@@ -40,8 +34,6 @@ services:
       - ENV=prod
     ports:
       - 3000:3000
-    expose:
-      - 3000
     depends_on:
       - users-db
   nginx:
