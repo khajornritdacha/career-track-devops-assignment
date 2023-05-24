@@ -11,9 +11,8 @@ services:
   products-service:
     build: ./products-service
     restart: always
-    container_name: products-service
-    ports:
-      - 3001:3001
+    expose:
+      - 3001
     environment:
       - ENV=prod
     depends_on:
@@ -28,12 +27,11 @@ services:
       - swe-users:/var/lib/mysql
   users-service:
     build: ./users-service
-    container_name: users-service
     restart: always
     environment:
       - ENV=prod
-    ports:
-      - 3000:3000
+    expose:
+      - 3000
     depends_on:
       - users-db
   nginx:
